@@ -13,6 +13,8 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
 import javax.swing.JList;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class VistaPantallaPrincipal extends JFrame {
 
@@ -43,6 +45,7 @@ public class VistaPantallaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VistaPantallaPrincipal() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 458, 520);
 		contentPane = new JPanel();
@@ -52,27 +55,31 @@ public class VistaPantallaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton bttnBloc = new JButton("Bloc de notas");
+		bttnBloc.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnBloc.setFont(new Font("Tahoma", Font.BOLD, 11));
 		bttnBloc.setForeground(new Color(0, 0, 0));
-		bttnBloc.setBackground(new Color(75, 0, 130));
+		bttnBloc.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
 		bttnBloc.setBounds(10, 221, 109, 23);
 		contentPane.add(bttnBloc);
 		
 		JButton bttnPaint = new JButton("Paint\r\n");
+		bttnPaint.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnPaint.setFont(new Font("Tahoma", Font.BOLD, 11));
-		bttnPaint.setBackground(new Color(75, 0, 130));
+		bttnPaint.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
 		bttnPaint.setBounds(125, 221, 93, 23);
 		contentPane.add(bttnPaint);
 		
 		JButton bttnGestion = new JButton("Gesti\u00F3n");
+		bttnGestion.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnGestion.setFont(new Font("Tahoma", Font.BOLD, 11));
-		bttnGestion.setBackground(new Color(75, 0, 130));
+		bttnGestion.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
 		bttnGestion.setBounds(222, 221, 103, 23);
 		contentPane.add(bttnGestion);
 		
 		JButton bttnJuego = new JButton("Juego");
+		bttnJuego.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnJuego.setFont(new Font("Tahoma", Font.BOLD, 11));
-		bttnJuego.setBackground(new Color(75, 0, 130));
+		bttnJuego.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
 		bttnJuego.setBounds(329, 221, 103, 23);
 		contentPane.add(bttnJuego);
 		
@@ -84,15 +91,16 @@ public class VistaPantallaPrincipal extends JFrame {
 		contentPane.add(lblComando);
 		
 		txtComando = new JTextField();
-		txtComando.setBounds(75, 8, 262, 20);
+		txtComando.setBounds(75, 8, 280, 20);
 		contentPane.add(txtComando);
 		txtComando.setColumns(10);
 		
 		JButton bttnComando = new JButton("Aplicar");
+		bttnComando.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnComando.setForeground(new Color(0, 0, 0));
 		bttnComando.setFont(new Font("Tahoma", Font.BOLD, 11));
-		bttnComando.setBackground(new Color(75, 0, 130));
-		bttnComando.setBounds(343, 7, 89, 23);
+		bttnComando.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
+		bttnComando.setBounds(361, 7, 71, 23);
 		contentPane.add(bttnComando);
 		
 		JTextArea txtAreaComando = new JTextArea();
@@ -102,7 +110,8 @@ public class VistaPantallaPrincipal extends JFrame {
 		contentPane.add(txtAreaComando);
 		
 		JButton bttnEliminar = new JButton("Eliminar proceso");
-		bttnEliminar.setBackground(new Color(75, 0, 130));
+		bttnEliminar.setBorder(new LineBorder(new Color(75, 0, 130)));
+		bttnEliminar.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
 		bttnEliminar.setForeground(new Color(0, 0, 0));
 		bttnEliminar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		bttnEliminar.setBounds(153, 448, 125, 23);
