@@ -44,7 +44,7 @@ public class ControladorPantallaPrincipal implements WindowListener, ActionListe
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 	}
 	
 }
