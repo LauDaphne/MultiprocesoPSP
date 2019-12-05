@@ -1,20 +1,20 @@
 package es.studium.Multiproceso;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.border.LineBorder;
+import java.awt.Component;
 import java.awt.Font;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
-import java.awt.SystemColor;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class VistaPantallaPrincipal extends JFrame {
 
@@ -24,28 +24,25 @@ public class VistaPantallaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtComando;
+	private JButton bttnBloc;
+	private JButton bttnPaint;
+	private JButton bttnGestion;
+	private JButton bttnJuego;
+	private JButton bttnAplicarComando;
+	private JButton bttnEliminarProceso;
+	private JList lstProcesos;
+	private DefaultListModel<String> modeloListaProcesos = new DefaultListModel<String>();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaPantallaPrincipal frame = new VistaPantallaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
+
+
 
 	/**
 	 * Create the frame.
 	 */
 	public VistaPantallaPrincipal() {
 		setResizable(false);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 458, 520);
 		contentPane = new JPanel();
@@ -54,72 +51,140 @@ public class VistaPantallaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton bttnBloc = new JButton("Bloc de notas");
+		bttnBloc = new JButton("Bloc de notas");
 		bttnBloc.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnBloc.setFont(new Font("Tahoma", Font.BOLD, 11));
 		bttnBloc.setForeground(new Color(0, 0, 0));
 		bttnBloc.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
-		bttnBloc.setBounds(10, 221, 109, 23);
+		bttnBloc.setBounds(312, 312, 109, 23);
 		contentPane.add(bttnBloc);
 		
-		JButton bttnPaint = new JButton("Paint\r\n");
+		bttnPaint = new JButton("Paint\r\n");
+		bttnPaint.setForeground(Color.BLACK);
 		bttnPaint.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnPaint.setFont(new Font("Tahoma", Font.BOLD, 11));
 		bttnPaint.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
-		bttnPaint.setBounds(125, 221, 93, 23);
+		bttnPaint.setBounds(312, 346, 109, 23);
 		contentPane.add(bttnPaint);
 		
-		JButton bttnGestion = new JButton("Gesti\u00F3n");
+		bttnGestion = new JButton("Gesti\u00F3n");
+		bttnGestion.setForeground(Color.BLACK);
 		bttnGestion.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnGestion.setFont(new Font("Tahoma", Font.BOLD, 11));
 		bttnGestion.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
-		bttnGestion.setBounds(222, 221, 103, 23);
+		bttnGestion.setBounds(312, 380, 109, 23);
 		contentPane.add(bttnGestion);
 		
-		JButton bttnJuego = new JButton("Juego");
+		bttnJuego = new JButton("Juego");
+		bttnJuego.setForeground(Color.BLACK);
 		bttnJuego.setBorder(new LineBorder(new Color(75, 0, 130)));
 		bttnJuego.setFont(new Font("Tahoma", Font.BOLD, 11));
 		bttnJuego.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
-		bttnJuego.setBounds(329, 221, 103, 23);
+		bttnJuego.setBounds(312, 414, 109, 23);
 		contentPane.add(bttnJuego);
 		
 		JLabel lblComando = new JLabel(" Comando:");
 		lblComando.setBackground(new Color(255, 255, 255));
 		lblComando.setForeground(new Color(0, 0, 0));
 		lblComando.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblComando.setBounds(10, 8, 62, 20);
+		lblComando.setBounds(10, 10, 62, 20);
 		contentPane.add(lblComando);
 		
 		txtComando = new JTextField();
-		txtComando.setBounds(75, 8, 280, 20);
+		txtComando.setBorder(null);
+		txtComando.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		txtComando.setFont(new Font("Consolas", Font.BOLD, 12));
+		txtComando.setForeground(new Color(0, 255, 0));
+		txtComando.setBackground(new Color(0, 0, 0));
+		txtComando.setBounds(75, 8, 280, 29);
 		contentPane.add(txtComando);
 		txtComando.setColumns(10);
 		
-		JButton bttnComando = new JButton("Aplicar");
-		bttnComando.setBorder(new LineBorder(new Color(75, 0, 130)));
-		bttnComando.setForeground(new Color(0, 0, 0));
-		bttnComando.setFont(new Font("Tahoma", Font.BOLD, 11));
-		bttnComando.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
-		bttnComando.setBounds(361, 7, 71, 23);
-		contentPane.add(bttnComando);
+		bttnAplicarComando = new JButton("Aplicar");
+		bttnAplicarComando.setBorder(new LineBorder(new Color(75, 0, 130)));
+		bttnAplicarComando.setForeground(new Color(0, 0, 0));
+		bttnAplicarComando.setFont(new Font("Tahoma", Font.BOLD, 11));
+		bttnAplicarComando.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
+		bttnAplicarComando.setBounds(361, 9, 71, 23);
+		contentPane.add(bttnAplicarComando);
 		
 		JTextArea txtAreaComando = new JTextArea();
+		txtAreaComando.setBackground(new Color(0, 0, 0));
+		txtAreaComando.setEnabled(false);
+		txtAreaComando.setForeground(new Color(0, 255, 0));
+		txtAreaComando.setFont(new Font("Consolas", Font.BOLD, 13));
+		txtAreaComando.setSelectedTextColor(new Color(0, 255, 0));
 		txtAreaComando.setSelectionColor(new Color(153, 102, 204));
 		txtAreaComando.setBorder(new LineBorder(new Color(75, 0, 130), 2));
-		txtAreaComando.setBounds(10, 36, 422, 174);
+		txtAreaComando.setBounds(10, 49, 422, 227);
 		contentPane.add(txtAreaComando);
 		
-		JButton bttnEliminar = new JButton("Eliminar proceso");
-		bttnEliminar.setBorder(new LineBorder(new Color(75, 0, 130)));
-		bttnEliminar.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
-		bttnEliminar.setForeground(new Color(0, 0, 0));
-		bttnEliminar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		bttnEliminar.setBounds(153, 448, 125, 23);
-		contentPane.add(bttnEliminar);
+		bttnEliminarProceso = new JButton("Eliminar proceso");
+		bttnEliminarProceso.setBorder(new LineBorder(new Color(75, 0, 130)));
+		bttnEliminarProceso.setBackground(UIManager.getColor("ComboBox.buttonHighlight"));
+		bttnEliminarProceso.setForeground(new Color(0, 0, 0));
+		bttnEliminarProceso.setFont(new Font("Tahoma", Font.BOLD, 11));
+		bttnEliminarProceso.setBounds(79, 448, 125, 23);
+		contentPane.add(bttnEliminarProceso);
 		
-		JList lstProcesos = new JList();
+		lstProcesos = new JList(modeloListaProcesos);
 		lstProcesos.setBorder(new LineBorder(new Color(75, 0, 130), 2));
-		lstProcesos.setBounds(10, 253, 422, 184);
+		lstProcesos.setBounds(10, 317, 268, 120);
 		contentPane.add(lstProcesos);
+		
+		JLabel lblProcesos = new JLabel("Procesos:");
+		lblProcesos.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblProcesos.setBounds(10, 287, 76, 14);
+		contentPane.add(lblProcesos);
+		
+		JLabel lblProgramas = new JLabel("Programas");
+		lblProgramas.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblProgramas.setBounds(327, 287, 76, 14);
+		contentPane.add(lblProgramas);
+		setVisible(true);
+	}
+
+
+	public JTextField getTxtComando() {
+		return txtComando;
+	}
+
+
+	public JButton getBttnBloc() {
+		return bttnBloc;
+	}
+
+
+	public JButton getBttnPaint() {
+		return bttnPaint;
+	}
+
+
+	public JButton getBttnGestion() {
+		return bttnGestion;
+	}
+
+
+	public JButton getBttnJuego() {
+		return bttnJuego;
+	}
+
+
+	public JButton getBttnAplicarComando() {
+		return bttnAplicarComando;
+	}
+
+
+	public JButton getBttnEliminarProceso() {
+		return bttnEliminarProceso;
+	}
+
+
+	public JList getLstProcesos() {
+		return lstProcesos;
+	}
+	
+	public DefaultListModel<String> getModeloListaProcesos() {
+		return modeloListaProcesos;
 	}
 }
