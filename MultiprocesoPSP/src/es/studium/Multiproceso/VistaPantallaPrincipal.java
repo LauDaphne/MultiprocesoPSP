@@ -3,6 +3,7 @@ package es.studium.Multiproceso;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Insets;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -16,8 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.Insets;
-import javax.swing.SwingConstants;
 
 public class VistaPantallaPrincipal extends JFrame {
 
