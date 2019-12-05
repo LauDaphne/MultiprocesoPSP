@@ -10,11 +10,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import java.awt.Insets;
+import javax.swing.SwingConstants;
 
 public class VistaPantallaPrincipal extends JFrame {
 
@@ -30,10 +33,10 @@ public class VistaPantallaPrincipal extends JFrame {
 	private JButton bttnJuego;
 	private JButton bttnAplicarComando;
 	private JButton bttnEliminarProceso;
-	private JList lstProcesos;
+	private JList<String> lstProcesos;
 	private DefaultListModel<String> modeloListaProcesos = new DefaultListModel<String>();
-
-
+	private JTextArea txtAreaComando;
+	private JScrollPane scrollTxtArea;
 
 
 
@@ -91,7 +94,9 @@ public class VistaPantallaPrincipal extends JFrame {
 		contentPane.add(lblComando);
 		
 		txtComando = new JTextField();
-		txtComando.setBorder(null);
+		txtComando.setMargin(new Insets(10, 10, 10, 10));
+		txtComando.setCaretColor(Color.GREEN);
+		txtComando.setBorder(new EmptyBorder(0, 4, 0, 0));
 		txtComando.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		txtComando.setFont(new Font("Consolas", Font.BOLD, 12));
 		txtComando.setForeground(new Color(0, 255, 0));
@@ -108,16 +113,19 @@ public class VistaPantallaPrincipal extends JFrame {
 		bttnAplicarComando.setBounds(361, 9, 71, 23);
 		contentPane.add(bttnAplicarComando);
 		
-		JTextArea txtAreaComando = new JTextArea();
+		txtAreaComando = new JTextArea();
+		txtAreaComando.setForeground(Color.GREEN);
+		txtAreaComando.setEditable(false);
+		txtAreaComando.setDisabledTextColor(Color.GREEN);
 		txtAreaComando.setBackground(new Color(0, 0, 0));
-		txtAreaComando.setEnabled(false);
-		txtAreaComando.setForeground(new Color(0, 255, 0));
 		txtAreaComando.setFont(new Font("Consolas", Font.BOLD, 13));
-		txtAreaComando.setSelectedTextColor(new Color(0, 255, 0));
 		txtAreaComando.setSelectionColor(new Color(153, 102, 204));
-		txtAreaComando.setBorder(new LineBorder(new Color(75, 0, 130), 2));
-		txtAreaComando.setBounds(10, 49, 422, 227);
-		contentPane.add(txtAreaComando);
+		txtAreaComando.setBorder(new EmptyBorder(5, 10, 5, 5));
+		
+		scrollTxtArea = new JScrollPane(txtAreaComando);
+		scrollTxtArea.setBounds(10, 49, 422, 227);
+		contentPane.add(scrollTxtArea);
+		
 		
 		bttnEliminarProceso = new JButton("Eliminar proceso");
 		bttnEliminarProceso.setBorder(new LineBorder(new Color(75, 0, 130)));
@@ -127,7 +135,7 @@ public class VistaPantallaPrincipal extends JFrame {
 		bttnEliminarProceso.setBounds(79, 448, 125, 23);
 		contentPane.add(bttnEliminarProceso);
 		
-		lstProcesos = new JList(modeloListaProcesos);
+		lstProcesos = new JList<String>(modeloListaProcesos);
 		lstProcesos.setBorder(new LineBorder(new Color(75, 0, 130), 2));
 		lstProcesos.setBounds(10, 317, 268, 120);
 		contentPane.add(lstProcesos);
@@ -143,7 +151,10 @@ public class VistaPantallaPrincipal extends JFrame {
 		contentPane.add(lblProgramas);
 		setVisible(true);
 	}
-
+	
+	public JTextArea getTxtAreaComando() {
+		return txtAreaComando;
+	}
 
 	public JTextField getTxtComando() {
 		return txtComando;
@@ -180,7 +191,7 @@ public class VistaPantallaPrincipal extends JFrame {
 	}
 
 
-	public JList getLstProcesos() {
+	public JList<String> getLstProcesos() {
 		return lstProcesos;
 	}
 	

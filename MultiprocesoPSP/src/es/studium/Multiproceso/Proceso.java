@@ -1,9 +1,12 @@
 package es.studium.Multiproceso;
 
+import javax.swing.JButton;
+
 public class Proceso {
 	
 	private String nombreAsignado;
 	private String nombreProceso;
+	private JButton idObjetoVista;
 	private String rutaJar;
 	private String pid;
 	
@@ -12,13 +15,23 @@ public class Proceso {
 		this.nombreProceso = "";
 		this.pid = "";
 		this.rutaJar="";
+		this.idObjetoVista=null;
 	}
 	
-	public Proceso(String nombreAsignado, String nombreProceso, String pid) {
+	public Proceso(String nombreAsignado, String nombreProceso, String pid, JButton idObjetoVista) {
 		this.nombreAsignado = nombreAsignado;
 		this.nombreProceso = nombreProceso;
 		this.pid = pid;
+		this.idObjetoVista= idObjetoVista;
 		this.rutaJar="";
+	}
+
+	public JButton getIdObjetoVista() {
+		return idObjetoVista;
+	}
+
+	public void setIdObjetoVista(JButton idObjetoVista) {
+		this.idObjetoVista = idObjetoVista;
 	}
 
 	public String getRutaJar() {

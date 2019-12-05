@@ -5,12 +5,15 @@ import java.awt.event.ActionListener;
 
 public class ControladorPantallaPrincipal implements ActionListener {
 	
-	VistaPantallaPrincipal objVista = new VistaPantallaPrincipal();
-	ModeloPantallaPrincipal objModelo = new ModeloPantallaPrincipal();
-	Proceso prcsBloc= new Proceso ("Bloc de notas","notepad.exe","0");
-	Proceso prcsPaint= new Proceso ("Paint","mspaint.exe","0");
-	Proceso prcsGestion= new Proceso ("Programa Gestión","java.exe","0");
-	Proceso prcsJuego= new Proceso ("Programa Juego","java.exe","0");
+	private VistaPantallaPrincipal objVista = new VistaPantallaPrincipal();
+	private ModeloPantallaPrincipal objModelo = new ModeloPantallaPrincipal();
+	
+	private Proceso prcsBloc= new Proceso ("Bloc de notas","notepad.exe","0", objVista.getBttnBloc());
+	private Proceso prcsPaint= new Proceso ("Paint","mspaint.exe","0", objVista.getBttnPaint());
+	private Proceso prcsGestion= new Proceso ("Programa Gestión","java.exe","0", objVista.getBttnGestion());
+	private Proceso prcsJuego= new Proceso ("Programa Juego","java.exe","0", objVista.getBttnJuego());
+	
+	private Proceso procesos []= {prcsBloc, prcsPaint, prcsGestion, prcsJuego};
 	
 	
 	
@@ -29,9 +32,13 @@ public class ControladorPantallaPrincipal implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if(e.getSource().equals(objVista.getBttnAplicarComando())) {
+			objModelo.ejecutarComandos(objVista.getTxtComando().getText(), objVista.getTxtAreaComando());
+		}
+		
 		if(e.getSource().equals(objVista.getBttnEliminarProceso())) {
-			objVista.getLstProcesos().getSelectedIndex();
-			objVista.getBttnBloc().setEnabled(false);
+			objModelo.reconocerProceso(objVista.getModeloListaProcesos().getElementAt(objVista.getLstProcesos().getSelectedIndex()), procesos);
+			objVista.getModeloListaProcesos().remove(objVista.getLstProcesos().getSelectedIndex());
 		}
 		
 		if(e.getSource().equals(objVista.getBttnBloc())) {
